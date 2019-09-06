@@ -1,0 +1,15 @@
+{
+   "name": "Validate Against Regexp",
+   "namespace": "IB\\ValidateAgainstRegex",
+   "description": "Enable Action tags @REGEX & @REGEX_MSG for validating TexBox Field against a regular expression",
+   "authors": [
+       {
+            "name": "Quentin Cavaillé",
+            "email": "q.cavaille@bordeaux.unicancer.fr",
+            "institution": "Institut Bergonié"
+        }
+    ],
+       "permissions": [
+        "redcap_data_entry_form"
+       ]
+}
