@@ -8,7 +8,7 @@ It create two action tags:
 
 ## Usage
 
-You must use both tags, without double quotes in it. **Space must be replaced by \u0020***[]: 
+You must use both tags, without double quotes in it. **Space must be replaced by \u0020**: 
 
 Legal usage :
 ```bash
