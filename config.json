@@ -1,6 +1,6 @@
 {
    "name": "Validate Against Regexp",
-   "namespace": "IB\\ValidateAgainstRegex",
+   "namespace": "IB\\RegExpValidate",
    "description": "Enable Action tags @REGEX & @REGEX_MSG for validating TexBox Field against a regular expression",
    "authors": [
        {

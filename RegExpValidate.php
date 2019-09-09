@@ -5,12 +5,12 @@
  * @author Quentin Cavaillé, Institut Bergonié
  */
 
-namespace IB\ValidateAgainstRegex;
+namespace IB\RegexValidate;
 
 use ExternalModules\AbstractExternalModule;
 use REDCap;
 
-class ValidateAgainstRegex extends AbstractExternalModule{
+class RegExpValidate extends AbstractExternalModule{
     function redcap_data_entry_form($project_id, $record, $instrument, $event_id, $group_id, $repeat_instance){
        ?>
             <script type="text/javascript">
