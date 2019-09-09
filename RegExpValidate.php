@@ -33,22 +33,27 @@ class RegExpValidate extends AbstractExternalModule{
                         $tmp = $fieldContent['field_annotation'];
                         $tmp = explode("\n", $tmp);
                         $all_tags_one_line = join(" ",array_map('trim', $tmp));
-                        preg_match_all('/@(\w+)=((?:".+") |(?:\S+))/', $all_tags_one_line, $matches);
-                        foreach($matches[1] as $index => $tag){
-                            if ($tag == "REGEX"){
-                                $fields[$fieldName]['regex']=str_replace("\u0020", " ", rtrim($matches[2][$index]));
+                        preg_match_all('/@(\w+)=((?:".+") |(?:\S+))/', $all_tags_one_line, $matches, PREG_SET_ORDER, 0);
+                        foreach($matches as $index => $match){
+                            if ($match[1]== "REGEX"){
+                                $fields[$fieldName]['regex']=str_replace("\u0020", " ", rtrim($match[2]));
                             }
-                            if ($tag == "REGEX_MSG"){
-                                $fields[$fieldName]['regex_msg']=rtrim($matches[2][$index]);
-                             }
+                            $fields[$fieldName]['regex_msg']="";
+                            if ($match[1] == "REGEX_MSG"){
+                                $fields[$fieldName]['regex_msg']=rtrim($match[2]);
+                            }
                         }
                     }
                     ?>
                     var fields = JSON.parse(`<?php print(json_encode($fields)); ?>`)
+                    console.log(fields);
                     $.each(fields, function(index, value){
                         var field = $("input[name="+index+"]")[0];
                         var regex = value['regex']
                         var regex_msg = value['regex_msg']
+                        if (regex_msg ==""){
+                            regex_msg = "Ce champ devrait être égale a : "+regex
+                        }
                         check_regex(field, regex, regex_msg);
 
                     })
