@@ -28,7 +28,7 @@ class RegExpValidate extends AbstractExternalModule{
                     }
                     <?php
                     $ins = REDCap::getDataDictionary('array', false, true, $this->instrument);
-                    $instruments = array();
+                    $fields = array();
                     foreach ( $ins as $fieldName => $fieldContent){
                         $tmp = $fieldContent['field_annotation'];
                         $tmp = explode("\n", $tmp);
@@ -36,16 +36,16 @@ class RegExpValidate extends AbstractExternalModule{
                         preg_match_all('/@(\w+)=((?:".+") |(?:\S+))/', $all_tags_one_line, $matches);
                         foreach($matches[1] as $index => $tag){
                             if ($tag == "REGEX"){
-                                $instruments[$fieldName]['regex']=str_replace("\u0020", " ", rtrim($matches[2][$index]));
+                                $fields[$fieldName]['regex']=str_replace("\u0020", " ", rtrim($matches[2][$index]));
                             }
                             if ($tag == "REGEX_MSG"){
-                                $instruments[$fieldName]['regex_msg']=rtrim($matches[2][$index]);
+                                $fields[$fieldName]['regex_msg']=rtrim($matches[2][$index]);
                              }
                         }
                     }
                     ?>
-                    var instruments = JSON.parse(`<?php print(json_encode($instruments)); ?>`)
-                    $.each(instruments, function(index, value){
+                    var fields = JSON.parse(`<?php print(json_encode($fields)); ?>`)
+                    $.each(fields, function(index, value){
                         var field = $("input[name="+index+"]")[0];
                         var regex = value['regex']
                         var regex_msg = value['regex_msg']
