@@ -16,8 +16,10 @@ class RegExpValidate extends AbstractExternalModule{
             <script type="text/javascript">
                 (function($, window, document) {
                     function check_regex(field, regex, message){
+                        $(field).attr("pattern", regex)
+                        $(field).attr("title", message)
                         $(field).on('change', function(){
-                            if (!new RegExp(regex,"g").test($(field).val())){
+                            if (!$(field)[0].validity.valid){
                                 $(field).attr("style", "font-weight: bold; background-color: rgb(255, 183, 190);");
                                 alert(message);
                             }
@@ -46,7 +48,6 @@ class RegExpValidate extends AbstractExternalModule{
                     }
                     ?>
                     var fields = JSON.parse(`<?php print(json_encode($fields)); ?>`)
-                    console.log(fields);
                     $.each(fields, function(index, value){
                         var field = $("input[name="+index+"]")[0];
                         var regex = value['regex']
