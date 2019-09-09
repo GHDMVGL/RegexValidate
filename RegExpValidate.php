@@ -42,7 +42,9 @@ class RegExpValidate extends AbstractExternalModule{
                             }
                             $fields[$fieldName]['regex_msg']="";
                             if ($match[1] == "REGEX_MSG"){
-                                $fields[$fieldName]['regex_msg']=rtrim($match[2]);
+                                $regex_msg = rtrim($match[2]);
+                                $regex_msg = str_replace('"', '', $regex_msg);
+                                $fields[$fieldName]['regex_msg'] = $regex_msg;
                             }
                         }
                     }
