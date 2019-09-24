@@ -5,7 +5,7 @@
  * @author Quentin Cavaillé, Institut Bergonié
  */
 
-namespace IB\RegExpValidate;
+namespace InstitutBergonie\RegExpValidate;
 
 use ExternalModules\AbstractExternalModule;
 use REDCap;
