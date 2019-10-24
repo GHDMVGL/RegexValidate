@@ -2,7 +2,7 @@
 /**
  * REDCap External Module: ValAR
  * Module for validating field against REGEX
- * @author Quentin Cavaillé, Institut Bergonié
+ * @author Quentin Cavaillé, Institut Bergonié, Yec'han Laizet
  */
 
 namespace InstitutBergonie\RegExpValidate;
